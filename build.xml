@@ -42,5 +42,6 @@
     <!-- Alvo padrão: executa o build completo -->
     <target name="build" depends="jar">
         <echo message="Build concluído!"/>
+        <echo message="Hello, World!"/>
     </target>
 </project>
