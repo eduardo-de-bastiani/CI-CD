@@ -1,0 +1,44 @@
+<project name="MyJavaProject" default="build" basedir=".">
+    <!-- Definindo propriedades -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir" value="${build.dir}/jar"/>
+    <property name="main-class" value="com.example.Main"/>
+
+    <!-- Alvo para limpar arquivos de build -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Alvo para compilar o código-fonte -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <!-- Alvo para executar testes -->
+    <target name="test" depends="compile">
+        <!-- Adicione aqui os comandos para execução de testes -->
+        <!-- Por exemplo: -->
+        <!-- <junit fork="true" haltonfailure="false"> -->
+        <!--     <classpath location="${classes.dir}"/> -->
+        <!--     <test name="com.example.TestClass"/> -->
+        <!-- </junit> -->
+    </target>
+
+    <!-- Alvo para criar um arquivo JAR -->
+    <target name="jar" depends="test">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/MyJavaProject.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Alvo padrão: executa o build completo -->
+    <target name="build" depends="jar">
+        <echo message="Build concluído!"/>
+    </target>
+</project>
