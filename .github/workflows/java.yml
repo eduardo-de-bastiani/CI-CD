@@ -16,6 +16,10 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'
+        distribution: 'adopt'
+        server-id: github
+        server-username: ${{ github.actor }}
+        server-password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Compile and run Java
       run: javac HelloWorld.java && java HelloWorld
