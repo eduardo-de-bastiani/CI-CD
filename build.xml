@@ -14,7 +14,8 @@
     <!-- Alvo para compilar o código-fonte -->
     <target name="compile" depends="clean">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false"/>
+        <antcall target="create-empty-src-directory"/>
     </target>
 
     <!-- Alvo para executar testes -->
